@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="http://localhost:60319/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="http://localhost:60319/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="ajax-loader.gif" style="display:none;width:100px" id="ajax-loader" />
+                <hr />
+                <div id="results" class="alert alert-success" style="display:none;">
+                    Bilgileriniz kayıt edildi!<strong>Yönlendiriliyorsunuz...</strong>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>Sen de Davetlisin!</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form id="DavetiyeForm">
+                            <div class="form-group">
+                                <label>
+                                    Ad: <input type="text" id="Ad" name="Ad" placeholder="Adınız..." class="form-control" />
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    E-mail: <input type="text" id="Eposta" name="Eposta" placeholder="E-mail Adresiniz..." class="form-control" />
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Katılacak mısın? <select name="KatilmaDurumu" id="KatilmaDurumu" class="form-control">
+                                        <option value="">Seçiniz</option>
+                                        <option value="true">Evet, Hadi Eğlenelim.</option>
+                                        <option value="false">Hayır, İyi Eğlenceler</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" value="Onayla" class="btn btn-success" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#DavetiyeForm").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "http://localhost:60319/api/Davetiye",
+                data: {
+                    Ad: $("#Ad").val(),
+                    Eposta: $("#Eposta").val(),
+                    KatilmaDurumu: $("#KatilmaDurumu").val()
+                },
+                type: "Post",
+                beforeSend: function () {
+                    $("#ajax-loader").show();
+                },
+                complete: function () {
+                    $("#ajax-loader").hide();
+                },
+                success: function () {
+                    $("results").show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

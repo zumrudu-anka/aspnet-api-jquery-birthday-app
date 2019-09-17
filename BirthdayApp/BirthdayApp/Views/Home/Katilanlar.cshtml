@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BirthdayApp.Models.DavetiyeModel>
+@{
+    ViewBag.Title = "Katilanlar";
+}
+
+<h2>Katilanlar</h2>
+<hr />
+<table class="table table-bordered table-hover table-responsive">
+    <tr>
+        <th>
+            Ad
+        </th>
+        <th>
+            E-Mail
+        </th>
+        <th>
+            Katılma Durumu
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Ad</td>
+            <td>@item.Eposta</td>
+            @if (item.KatilmaDurumu == false)
+            {
+                <td>
+                    <span class="btn btn-warning">Katılmıyor</span>
+                </td>
+            }
+            else
+            {
+                <td><span class="btn btn-info">Katılıyor</span></td>
+            }
+        </tr>
+    }
+</table>
+

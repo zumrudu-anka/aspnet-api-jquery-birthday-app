@@ -13,8 +13,9 @@
                 <img src="ajax-loader.gif" style="display:none;width:100px" id="ajax-loader" />
                 <hr />
                 <div id="results" class="alert alert-success" style="display:none;">
-                    Bilgileriniz kayıt edildi!<strong>Yönlendiriliyorsunuz...</strong>
+                    Bilgileriniz kayıt edildi!
                 </div>
+                <table id="Gelenler" border="1" title="Katılanlar"></table>
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h4>Sen de Davetlisin!</h4>
@@ -50,6 +51,46 @@
         </div>
     </div>
     <script>
+        function GetKatilanlar() {
+            $.getJSON("http://localhost:60319/katilanlar", function (data) {
+                $.each(data, function (key, value) {
+                    var tr = document.createElement("tr");
+                    var th = document.createElement("th");
+                    var textnode = document.createTextNode("Adı");
+                    th.appendChild(textnode);
+                    tr.appendChild(th);
+                    th = document.createElement("th");
+                    textnode = document.createTextNode("E-Mail");
+                    th.appendChild(textnode);
+                    tr.appendChild(th);
+                    th = document.createElement("th");
+                    textnode = document.createTextNode("Katilma Durumu");
+                    th.appendChild(textnode);
+                    tr.appendChild(th);
+                    document.getElementById("Gelenler").appendChild(tr);
+                    tr = document.createElement("tr");
+                    var td = document.createElement("td");
+                    var label = document.createElement("label");
+                    label.className = "label label-success";
+                    textnode = document.createTextNode(value.Ad);
+                    td.appendChild(label);
+                    label.appendChild(textnode);
+                    tr.appendChild(td);
+                    document.getElementById("Gelenler").appendChild(tr);
+                    td = document.createElement("td");
+                    label = document.createElement("label");
+                    textnode = document.createTextNode(value.Eposta);
+                    td.appendChild(label);
+                    label.appendChild(textnode);
+                    tr.appendChild(td);
+                    document.getElementById("Gelenler").appendChild(tr);
+
+                    //html.push("<tr><td>asdasd</td></tr>");
+                    //html.push("<tr><td><label class='label label-success'>" + value.Ad + "</label></td><td><label class='label label-success'>" + value.Eposta + "</label></td><td><label class='label label-success'>" + value.KatilmaDurumu.toString() + "</label></td></tr>");
+                });
+            })
+
+        }
         $("#DavetiyeForm").submit(function (event) {
             event.preventDefault();
             $.ajax({
@@ -66,8 +107,11 @@
                 complete: function () {
                     $("#ajax-loader").hide();
                 },
-                success: function () {
-                    $("results").show();
+                success: function (data) {
+                    if ($("#KatilmaDurumu").val() == "true") {
+                        $("#results").show();
+                        GetKatilanlar();
+                    }
                 }
             });
         });

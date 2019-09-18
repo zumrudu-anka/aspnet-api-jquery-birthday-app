@@ -117,7 +117,7 @@
     <Content Include="Web.config" />
     <Content Include="Views\Home\DavetiyeFormu.cshtml" />
     <Content Include="Views\Home\Thanks.cshtml" />
-    <Content Include="Views\Home\Katilanlar.cshtml" />
+    <Content Include="Views\Home\TumListe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />

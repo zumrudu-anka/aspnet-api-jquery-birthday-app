@@ -30,7 +30,7 @@ namespace BirthdayApp.Controllers
             return View(davetiye);
         }
 
-        public ActionResult Katilanlar()
+        public ActionResult TumListe()
         {
             return View(Veritabani.Liste);
         }

@@ -53,23 +53,24 @@
     <script>
         function GetKatilanlar() {
             $.getJSON("http://localhost:60319/katilanlar", function (data) {
+                var tr = document.createElement("tr");
+                var th = document.createElement("th");
+                var textnode = document.createTextNode("Adı");
+                th.appendChild(textnode);
+                tr.appendChild(th);
+                th = document.createElement("th");
+                textnode = document.createTextNode("E-Mail");
+                th.appendChild(textnode);
+                tr.appendChild(th);
+                th = document.createElement("th");
+                textnode = document.createTextNode("Katilma Durumu");
+                th.appendChild(textnode);
+                tr.appendChild(th);
+                document.getElementById("Gelenler").appendChild(tr);
                 $.each(data, function (key, value) {
-                    var tr = document.createElement("tr");
-                    var th = document.createElement("th");
-                    var textnode = document.createTextNode("Adı");
-                    th.appendChild(textnode);
-                    tr.appendChild(th);
-                    th = document.createElement("th");
-                    textnode = document.createTextNode("E-Mail");
-                    th.appendChild(textnode);
-                    tr.appendChild(th);
-                    th = document.createElement("th");
-                    textnode = document.createTextNode("Katilma Durumu");
-                    th.appendChild(textnode);
-                    tr.appendChild(th);
-                    document.getElementById("Gelenler").appendChild(tr);
                     tr = document.createElement("tr");
                     var td = document.createElement("td");
+                    td.style = "text-align:center";
                     var label = document.createElement("label");
                     label.className = "label label-success";
                     textnode = document.createTextNode(value.Ad);
@@ -78,15 +79,22 @@
                     tr.appendChild(td);
                     document.getElementById("Gelenler").appendChild(tr);
                     td = document.createElement("td");
+                    td.style = "text-align:center";
                     label = document.createElement("label");
                     textnode = document.createTextNode(value.Eposta);
                     td.appendChild(label);
                     label.appendChild(textnode);
                     tr.appendChild(td);
+                    td = document.createElement("td");
+                    td.style = "text-align:center";
+                    label = document.createElement("label");
+                    label.className = "label label-warning";
+                    label.style = "text-align:center";
+                    textnode = document.createTextNode("Katılıyor");
+                    td.appendChild(label);
+                    label.appendChild(textnode);
+                    tr.appendChild(td);
                     document.getElementById("Gelenler").appendChild(tr);
-
-                    //html.push("<tr><td>asdasd</td></tr>");
-                    //html.push("<tr><td><label class='label label-success'>" + value.Ad + "</label></td><td><label class='label label-success'>" + value.Eposta + "</label></td><td><label class='label label-success'>" + value.KatilmaDurumu.toString() + "</label></td></tr>");
                 });
             })
 
@@ -111,6 +119,9 @@
                     if ($("#KatilmaDurumu").val() == "true") {
                         $("#results").show();
                         GetKatilanlar();
+                        setTimeout(function () {
+                            location.reload();
+                        }, 5000);
                     }
                 }
             });

@@ -14,11 +14,11 @@ namespace BirthdayApp.Models
                 {"Osman", new DavetiyeModel() { Ad = "Osman", Eposta = "osman@osman.com", KatilmaDurumu = false } },
                 {"Hacer", new DavetiyeModel() { Ad = "Hacer", Eposta = "hacer@hacer.com", KatilmaDurumu = true } },
                 {"Merve", new DavetiyeModel() { Ad = "Merve", Eposta = "Merve@Merve.com", KatilmaDurumu = true } },
-                {"Hüseyin", new DavetiyeModel() { Ad = "Hüseyin", Eposta = "Hüseyin@Hüseyin.com", KatilmaDurumu = true } },
-                {"Gökhan", new DavetiyeModel() { Ad = "Gökhan", Eposta = "Gökhan@Gökhan.com", KatilmaDurumu = true } },
-                {"Eren", new DavetiyeModel() { Ad = "Eren", Eposta = "Eren@Eren.com", KatilmaDurumu = true } },
-                {"Tuğba", new DavetiyeModel() { Ad = "Tuğba", Eposta = "Tuğba@Tuğba.com", KatilmaDurumu = true } },
-                {"Büşra", new DavetiyeModel() { Ad = "Büşra", Eposta = "Büşra@Büşra.com", KatilmaDurumu = true } }
+                {"Ayşe", new DavetiyeModel() { Ad = "Ayşe", Eposta = "Ayşe@Ayşe.com", KatilmaDurumu = true } },
+                {"Murat", new DavetiyeModel() { Ad = "Murat", Eposta = "Murat@Murat.com", KatilmaDurumu = true } },
+                {"Fatma", new DavetiyeModel() { Ad = "Fatma", Eposta = "Fatma@Fatma.com", KatilmaDurumu = true } },
+                {"Rıdvan", new DavetiyeModel() { Ad = "Rıdvan", Eposta = "Rıdvan@Rıdvan.com", KatilmaDurumu = true } },
+                {"Kübra", new DavetiyeModel() { Ad = "Kübra", Eposta = "Kübra@Kübra.com", KatilmaDurumu = true } }
             };
         }
 
